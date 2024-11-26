@@ -41,15 +41,7 @@ export default function Header() {
             <Link href="/team">L'équipe</Link>
           </li> */}
 <li>
-          <Link
-            href={linkedin}
-            className={styles.linkedinIcon}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}
-          >
-            <img src="assets/linkedin.png" alt="logo linkedin" />
-          </Link>
+      
           </li>
         </ul>
       </div>

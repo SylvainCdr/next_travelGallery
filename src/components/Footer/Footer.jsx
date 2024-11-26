@@ -6,12 +6,12 @@ function Footer() {
   return (
     <div className={styles["footer-container"]}>
       <div className={styles["section-1"]}>
-        <Image
+        {/* <Image
           src="/assets/diviniti-logo-purple.svg"
           alt="Logo Diviniti"
           width={400}
           height={200}
-        />
+        /> */}
         <p className={styles.slogan}>Gaming for Realiti</p>
         <p className={styles.description}>
           Le nouveau système d&apos;exploitation sûreté

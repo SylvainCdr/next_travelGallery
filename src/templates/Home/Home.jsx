@@ -1,34 +1,45 @@
+import { useEffect, useState } from 'react';
 
-import styles from "./style.module.scss";
+const ProductList = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-import Head from "next/head";
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          'https://gethotproducts-3rlb4imxua-uc.a.run.app/' // Remplacez par l'URL correcte
+        );
+        const data = await response.json();
+        setProducts(data.products);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default function Home() {
+    fetchProducts();
+  }, []);
 
-
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    <>
-      <Head>
-        
-      </Head>
-
-      <div
-        className={styles.homeContainer}
-     
-      >
-       
-
-        <div className={styles.titles} >
-          <h2 >Gaming for Realiti</h2>
-          <h1 >
-            Le nouveau système d&apos;exploitation sûreté
-          </h1>
-          <div  className={styles.cta}>
-   
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <h1>Liste des produits</h1>
+      <ul>
+        {products.map((product, index) => (
+          <li key={index}>
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <p>{product.price}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
+export default ProductList;

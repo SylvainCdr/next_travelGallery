@@ -30,8 +30,8 @@ exports.getHotProducts = functions.https.onRequest((req, res) => {
     } = req.query;
 
     // Accéder aux variables d'environnement
-    const appKey = process.env.NEXT_PUBLIC_ALILEXPRESS_APP_KEY;
-    const appSecret = process.env.NEXT_PUBLIC_ALILEXPRESS_APP_SECRET;
+    const appKey = process.env.NEXT_PUBLIC_ALIEXPRESS_APP_KEY;
+    const appSecret = process.env.NEXT_PUBLIC_ALIEXPRESS_APP_SECRET;
     console.log('appKey:', appKey);
     console.log('appSecret:', appSecret);
 

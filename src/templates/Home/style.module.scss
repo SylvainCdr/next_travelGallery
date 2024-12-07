@@ -4,114 +4,34 @@
   justify-content: center;
   align-items: center;
   min-height: 110vh; // Remplit la hauteur de la fenêtre
-  background-color: black; // Ou toute autre couleur de fond
-  // background-image: url('https://images.unsplash.com/photo-1677784975579-b16f8028b555?q=80&w=1828&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-image: url("https://images.unsplash.com/photo-1682100615316-e152a40b5793?q=80&w=1828&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: #ffffff;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(289,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%2380F'/%3E%3Cstop offset='1' stop-color='%23f40'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%23ffffff' cx='12' cy='12' r='12'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.1'/%3E%3C/svg%3E");
+background-attachment: fixed;
+  padding-top : 7rem;
+  margin : 0 auto;
+  width: 100%;
 
-  .homeLogo {
-    width: 10rem;
+ 
+  
+  .productsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 1400px;
+    justify-content: center;
+  }
+  
+  .productCard {
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .productImage {
+    max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
-    animation: pulse infinite;
-    -webkit-animation: pulse 12s infinite;
   }
 
-  .titles {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 5rem;
-
-    h2 {
-      color: #f1a0ff;
-      font-size: 2.6rem;
-      letter-spacing: 2px;
-      font-weight: 600;
-      padding: 1rem;
-      border-radius: 10px 10px 10px 10px;
-      -webkit-border-radius: 10px 10px 10px 10px;
-      -moz-border-radius: 10px 10px 10px 10px;
-      -ms-border-radius: 10px 10px 10px 10px;
-      -o-border-radius: 10px 10px 10px 10px;
-    }
-
-    h1 {
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 500;
-      padding-top: 0rem;
-    }
-  }
-  .ctaButtonWrapper {
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    .knowMoreButton {
-      color: #870bff;
-      background-color: #ffffff;
-      padding: 0.8rem 3rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 1.1rem;
-      border-radius: 2rem;
-      -webkit-border-radius: 2rem;
-      -moz-border-radius: 2rem;
-      -ms-border-radius: 2rem;
-      -o-border-radius: 2rem;
-      margin-bottom: 1rem;
-    }
-  }
-  .downloadButton {
-    color: #870bff;
-    background-color: #ffffff;
-    padding: 0.8rem 3rem;
-    font-weight: 500;
-    cursor: pointer;
-    font-size: 1.1rem;
-    border-radius: 2rem;
-    -webkit-border-radius: 2rem;
-    -moz-border-radius: 2rem;
-    -ms-border-radius: 2rem;
-    -o-border-radius: 2rem;
-    border: none;
-  }
-  a {
-    text-decoration: none;
-  }
 }
-
-@media (max-width: 1080px) {
-  .homeContainer {
-    padding-top: 2rem;
-    padding-left: 4%;
-    padding-right: 4%;
-
-    .homeLogo {
-      width: 8rem;
-    }
-
-    .titles {
-      h2 {
-        font-size: 2.1rem;
-      }
-      h1 {
-        font-size: 1rem;
-      }
-    }
-    .ctaButtonWrapper {
-      margin-top: 3rem;
-      .ctaButton {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-      }
-    }
-  }
-}
+  

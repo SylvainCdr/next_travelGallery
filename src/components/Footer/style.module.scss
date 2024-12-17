@@ -6,6 +6,7 @@
   min-height: 60vh;
   justify-content: space-around;
 
+
   .section-1 {
     padding: 0em 2em;
     width: 30%;
@@ -13,9 +14,13 @@
     text-align: center;
 
     img {
-      width: 30%;
-      
-    }
+      width: 15rem;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+}
 
     .slogan {
       font-size: 1.5rem;

@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className={styles["footer-container"]}>
       <div className={styles["section-1"]}>
-        <img src="/assets/hph-logo.png" alt="Logo hot product hunt" />
+        <img src="/assets/hph-logo3.jpg" alt="Logo hot product hunt" />
         <p className={styles.slogan}>ePN</p>
         <p className={styles.description}></p>
       </div>
@@ -40,8 +40,8 @@ function Footer() {
               Linkedin
             </Link>
           </li>
+          </ul> */}
           <p className={styles.copyright}>ePN</p>
-        </ul> */}
       </div>
     </div>
   );

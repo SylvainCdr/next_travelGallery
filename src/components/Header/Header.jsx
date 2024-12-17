@@ -11,22 +11,24 @@ export default function Header() {
         <div className={styles.headerLogo}>
           <Link href="/">
             <img
-              src="assets/hph-logo.png"
-              alt="Diviniti logo"
+              src="assets/hph-logo2.jpg"
+              alt="hot product hunt logo"
              
             />
           </Link>
         </div>
         <ul className={styles.headerLinks}>
-          {/* <li>
-            <Link href="/v1">V1</Link>
+          <li>
+            <Link href="/allproducts">All Products</Link>
+          </li>
+         
+          <li>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="/v2">V2</Link>
+            <Link href="/contact">Contact</Link>
           </li>
-          <li>
-            <Link href="/v3">V3</Link>
-          </li>
+           {/* 
           <li>
             <Link href="/v4">V4</Link>
           </li>

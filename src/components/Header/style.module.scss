@@ -2,12 +2,12 @@
   display: flex;
   // margin-top: 1%;
   align-self: center;
-  background-color: #dad9d7;
+  background-color: #fdfcfd;
   color: white;
   position: fixed;
   z-index: 1000;
   top: 0;
-  height: 4rem;
+  height: 5rem;
   width: 100%;
 
   .headerLogo {
@@ -15,11 +15,10 @@
     align-items: center;
     justify-content: center;
     width: 10%;
-    // padding-top: 1rem;
 
     left: 0%;
     img {
-      width: 5.5rem;
+      width: 4.5rem;
       height: auto;
       transition: all 0.3s;
       border-radius: 10px;
@@ -36,12 +35,10 @@
   }
   .headerLinks {
     display: flex;
-  justify-content: space-around ;
+    justify-content: space-around;
     width: 50%;
     align-items: center;
-    margin-left : 40%;
-
-   
+    margin-left: 40%;
     gap: 20px;
 
     li {
@@ -49,33 +46,18 @@
         text-decoration: none;
         font-weight: 600;
         font-size: 1rem;
-        color: #000000;
-text-transform: uppercase;
+        color : white;
+        background-color: var(--sunset1);
+        text-transform: uppercase;
         padding: 5px 15px;
-        border: 1px solid #f52c16;
+        // border: 1px solid var(--sunset1);
         border-radius: 5px;
         transition: all 0.3s;
         &:hover {
-          background-color: white;
-          
+          background-color: #006b79;
         }
       }
     }
 
-    .linkedinIcon {
-      display: flex;
-      right: 7%;
-      top: 30%;
-      position: absolute;
-
-      img {
-        width: 3.5rem;
-        height: auto;
-
-        &:hover {
-          scale: 1.1;
-        }
-      }
-    }
   }
 }

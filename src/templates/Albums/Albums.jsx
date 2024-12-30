@@ -18,12 +18,12 @@ export default function Albums() {
   };
 
   return (
-    <div className={styles.galleryContainer}>
-      <h1>Flickr Gallery</h1>
+    <div className={styles.albumsContainer}>
+    
 
       {/* Affichage des albums */}
       <div className={styles.albumList}>
-        <h2>Albums</h2>
+        <h1>Albums</h1>
         {albums.length > 0 ? (
           <div className={styles.albumGrid}>
             {albums.map((album) => (

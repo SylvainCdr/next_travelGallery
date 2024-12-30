@@ -11,19 +11,19 @@ export default function Header() {
         <div className={styles.headerLogo}>
           <Link href="/">
             <img
-              src="assets/hph-logo2.jpg"
-              alt="hot product hunt logo"
+              src="/assets/logo.jpg"
+              alt="photo gallery home"
              
             />
           </Link>
         </div>
         <ul className={styles.headerLinks}>
           <li>
-            <Link href="/allproducts">All Products</Link>
+            <Link href="/albums">Albums</Link>
           </li>
          
           <li>
-            <Link href="/about">About</Link>
+            <Link href="/about-us">A Propos</Link>
           </li>
           <li>
             <Link href="/contact">Contact</Link>

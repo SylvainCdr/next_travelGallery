@@ -5,8 +5,8 @@ function Footer() {
   return (
     <div className={styles["footer-container"]}>
       <div className={styles["section-1"]}>
-        <img src="/assets/hph-logo3.jpg" alt="Logo hot product hunt" />
-        <p className={styles.slogan}>ePN</p>
+        <img src="/assets/logo.jpg" alt="logo home" />
+        <p className={styles.slogan}>Sly's Adventure Gallery</p>
         <p className={styles.description}></p>
       </div>
       {/* <div className={styles["section-2"]}>
@@ -18,31 +18,15 @@ function Footer() {
           <Link href="/">
             <li>Accueil</li>
           </Link>
-          <Link href="/about">
+          <Link href="/albums">
+            <li>Albums</li>
+          </Link>
+          <Link href="/a-propos">
             <li>A Propos</li>
           </Link>
         </ul>
       </div>
 
-      <div className={styles["section-3"]}>
-        <h4>Contact</h4>
-        {/* <ul>
-          <li>
-            <i className="fa-solid fa-phone"></i>(+33) 1 39 60 98 82
-          </li>
-          <li>
-            <i className="fa-solid fa-location-dot"></i> 38 Rue Jean Mermoz,
-            78600 Maisons-Laffitte
-          </li>
-          <li>
-            <i className="fa-brands fa-linkedin"></i>
-            <Link href="https://www.linkedin.com/company/divinititech/">
-              Linkedin
-            </Link>
-          </li>
-          </ul> */}
-          <p className={styles.copyright}>ePN</p>
-      </div>
     </div>
   );
 }

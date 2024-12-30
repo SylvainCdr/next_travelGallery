@@ -26,3 +26,41 @@ export const fetchPhotosFromAlbum = async (albumId, userId) => {
     console.error("Erreur lors de la récupération des photos de l'album:", error);
   }
 };
+
+export const specificPhoto = async (photoId) => {
+  try {
+    const response = await fetch(
+      `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`
+    );
+    const data = await response.json();
+    return data.photo;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des photos de l'album:", error);
+  }
+}
+
+
+// service/flickr.js
+
+export const getPhotoMetadata = async (photoId) => {
+
+  const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  console.log("Réponse de l'API Flickr:", data);  // Ajouter cette ligne pour inspecter la réponse
+
+  if (data.stat === "ok") {
+    const photo = data.photo;
+    return {
+      title: photo.title._content,
+      description: photo.description._content,
+      tags: photo.tags.tag.map((tag) => tag._content).join(", "),
+      dateTaken: photo.dates.taken,
+    };
+  } else {
+    console.error("Erreur API Flickr:", data);  // Log des erreurs API
+    throw new Error("Erreur lors de la récupération des métadonnées");
+  }
+};

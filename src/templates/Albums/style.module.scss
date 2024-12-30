@@ -1,65 +1,59 @@
 .albumsContainer {
-    padding: 20px;
-   margin : 0 auto;
-    padding-top: 6rem;
-    max-width: 1400px;
-  }
-  
-  .albumList {
-    margin-bottom: 40px;
-  }
-  
-  .albumGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 20px;
-   
-  }
-  
-  .albumItem {
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding-top: 6rem;
+  max-width: 1400px;
+  min-height: 100vh;
+}
 
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin: 0;
-      padding: 1rem;
-      background-color: #f1f1f1;
-      text-align: center;
-    }
-    
-  }
+.albumList {
+  margin-bottom: 40px;
+}
 
+.albumGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
 
+.albumItem {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  
-  .albumImage {
-    width: 30rem;
-    height: 20rem;
-   object-fit: cover;
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    text-align: center;
   }
-  
-  .photoGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .photoItem {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .photoImage {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
+}
+
+.albumImage {
+  width: 30rem;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.photoItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photoImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}

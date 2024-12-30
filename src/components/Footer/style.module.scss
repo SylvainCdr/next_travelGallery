@@ -1,9 +1,9 @@
 .footer-container {
-  background: rgb(0, 0, 0);
+  background:#fdfcfd;
   width: 100%;
   box-shadow: 0 0 3px rgba(255, 254, 254, 0.5);
   display: flex;
-  min-height: 60vh;
+  min-height: 40vh;
   justify-content: space-around;
   margin-top : 4rem;
 
@@ -15,7 +15,7 @@
     text-align: center;
 
     img {
-      width: 15rem;
+      width: 10rem;
       border-radius: 10px;
       -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -24,9 +24,8 @@
 }
 
     .slogan {
-      font-size: 1.5rem;
-      color: #e18aff;
-      font-weight: 500;
+      font-size: 1.2rem;
+      font-weight: 600;
       margin-top: 1rem;
     }
 
@@ -44,19 +43,17 @@
 
     h4 {
       text-transform: uppercase;
-      font-size: 1.4rem;
-      font-weight: 500;
+      font-size: 1.2rem;
+      font-weight: 600;
       margin-top: 10rem;
       margin-bottom: 1em;
     }
 
     a {
       text-decoration: none;
-      color: white;
+ 
 
-      &:hover {
-        color: #ec99ff;
-      }
+  
     }
 
     li {
@@ -64,10 +61,7 @@
       line-height: 2.1rem;
     }
 
-    i {
-      margin-right: 0.7rem;
-      color: #e18aff;
-    }
+ 
 
     .copyright {
       margin-top: 8em;

@@ -166,7 +166,8 @@ color: var(--sunset2);
   :root {
     --sunset1: #03A3B9;
     --sunset2: #7a3b69;
-    --sunset4: #575C55;
+    --sunset3: #575C55;
+    --sunset4: #D6C3C9;
     --sunset5: #EAE0D5;
     --sunset6: #F1FFFA;
   } 

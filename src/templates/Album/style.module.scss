@@ -34,4 +34,17 @@
     font-size: 1.5rem;
     margin-top: 2rem;
   }
+
+  button {
+    margin: 2rem auto;
+    padding: 0.5rem 4rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: var(--sunset2);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    float : right ;
+  }
 }

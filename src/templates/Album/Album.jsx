@@ -62,7 +62,7 @@ export default function Album() {
   return (
     <div className={styles.albumContainer}>
       <h1>Photos de l'album</h1>
-      {photos.length > 0 ? (
+    
         <div className={styles.photoGrid}>
           {photos.map((photo) => {
             const smallPhotoUrl = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
@@ -103,9 +103,11 @@ export default function Album() {
             );
           })}
         </div>
-      ) : (
-        <p>Aucune photo disponible pour cet album.</p>
-      )}
+
+    
+        <button onClick={() => router.back()}>Retour</button>
+
+      
     </div>
   );
 }

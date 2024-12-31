@@ -42,48 +42,97 @@ export const specificPhoto = async (photoId) => {
 
 // service/flickr.js
 
-export const getPhotoMetadata = async (photoId) => {
+// export const getPhotoMetadata = async (photoId) => {
 
-  const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`;
+//   const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`;
 
-  const response = await fetch(url);
-  const data = await response.json();
+//   const response = await fetch(url);
+//   const data = await response.json();
 
-  console.log("Réponse de l'API Flickr:", data);  // Ajouter cette ligne pour inspecter la réponse
+//   console.log("Réponse de l'API Flickr:", data);  // Ajouter cette ligne pour inspecter la réponse
 
-  if (data.stat === "ok") {
-    const photo = data.photo;
-    return {
-      title: photo.title._content,
-      description: photo.description._content,
-      tags: photo.tags.tag.map((tag) => tag._content).join(", "),
-      dateTaken: photo.dates.taken,
-    };
-  } else {
-    console.error("Erreur API Flickr:", data);  // Log des erreurs API
-    throw new Error("Erreur lors de la récupération des métadonnées");
+//   if (data.stat === "ok") {
+//     const photo = data.photo;
+//     return {
+//       title: photo.title._content,
+//       description: photo.description._content,
+//       tags: photo.tags.tag.map((tag) => tag._content).join(", "),
+//       dateTaken: photo.dates.taken,
+//     };
+//   } else {
+//     console.error("Erreur API Flickr:", data);  // Log des erreurs API
+//     throw new Error("Erreur lors de la récupération des métadonnées");
+//   }
+// };
+
+
+export const fetchAllPhotosWithMetadata = async (userId, perPage = 500) => {
+  try {
+    // Récupérer la première page pour obtenir le nombre total de pages
+    const firstPageResponse = await fetch(
+      `https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=${apiKey}&user_id=${userId}&extras=geo&per_page=${perPage}&page=1&format=json&nojsoncallback=1`
+    );
+    const firstPageData = await firstPageResponse.json();
+
+    if (firstPageData.stat !== "ok") {
+      console.error("Erreur lors de la récupération des photos:", firstPageData.message);
+      return { photos: [], totalPages: 0 };
+    }
+
+    const totalPages = firstPageData.photos.pages;
+    let allPhotos = firstPageData.photos.photo;
+
+    // Récupérer les photos de toutes les pages suivantes
+    for (let page = 2; page <= totalPages; page++) {
+      const response = await fetch(
+        `https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=${apiKey}&user_id=${userId}&extras=geo&per_page=${perPage}&page=${page}&format=json&nojsoncallback=1`
+      );
+      const data = await response.json();
+
+      if (data.stat === "ok") {
+        allPhotos = [...allPhotos, ...data.photos.photo];  // Ajouter les photos de la page actuelle
+      } else {
+        console.error("Erreur lors de la récupération des photos:", data.message);
+        break;
+      }
+    }
+
+    // Récupérer les métadonnées de chaque photo
+    const photosWithMetadata = await Promise.all(
+      allPhotos.map(async (photo) => {
+        const metadata = await getPhotoMetadata(photo.id); // Fonction pour récupérer les métadonnées de la photo
+        return { ...photo, metadata };
+      })
+    );
+
+    return { photos: photosWithMetadata, totalPages };
+  } catch (error) {
+    console.error("Erreur lors de la récupération des photos et métadonnées:", error);
+    return { photos: [], totalPages: 0 };
   }
 };
 
-
-export const fetchAllPhotos = async (userId, page = 1, perPage = 500) => {
+// Fonction pour récupérer les métadonnées d'une photo
+const getPhotoMetadata = async (photoId) => {
   try {
-    const response = await fetch(
-      `https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=${apiKey}&user_id=${userId}&extras=geo&per_page=${perPage}&page=${page}&format=json&nojsoncallback=1`
-    );
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=${apiKey}&photo_id=${photoId}&format=json&nojsoncallback=1`;
+    const response = await fetch(url);
     const data = await response.json();
 
     if (data.stat === "ok") {
+      const photo = data.photo;
       return {
-        photos: data.photos.photo,
-        totalPages: data.photos.pages,
+        title: photo.title._content,
+        description: photo.description._content,
+        tags: photo.tags.tag.map((tag) => tag._content).join(", "),
+        dateTaken: photo.dates.taken,
       };
     } else {
-      console.error("Erreur lors de la récupération des photos:", data.message);
-      return { photos: [], totalPages: 0 };
+      console.error("Erreur lors de la récupération des métadonnées:", data);
+      return {};
     }
   } catch (error) {
-    console.error("Erreur lors de la récupération des photos:", error);
-    return { photos: [], totalPages: 0 };
+    console.error("Erreur lors de la récupération des métadonnées de la photo:", error);
+    return {};
   }
 };

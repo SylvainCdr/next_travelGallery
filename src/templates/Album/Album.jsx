@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { fetchPhotosFromAlbum, getPhotoMetadata } from "../../services/flickr";
+import { fetchPhotosFromAlbum } from "../../services/flickr";
 import { motion } from "framer-motion";
 import styles from "./style.module.scss";
 import ModalImage from "react-modal-image";
@@ -29,18 +29,7 @@ export default function Album() {
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
   };
 
-  // Fonction pour récupérer les métadonnées d'une photo
-  const fetchMetadata = async (photoId) => {
-    try {
-      const metadata = await getPhotoMetadata(photoId);
-      setPhotoMetadata((prev) => ({
-        ...prev,
-        [photoId]: metadata,
-      }));
-    } catch (error) {
-      console.error("Erreur lors de la récupération des métadonnées:", error);
-    }
-  };
+
 
   useEffect(() => {
     if (router.isReady) {
@@ -49,8 +38,7 @@ export default function Album() {
         fetchPhotosFromAlbum(id, process.env.NEXT_PUBLIC_FLICKR_USER_ID)
           .then((photos) => {
             setPhotos(shuffleArray(photos));  // Mélange des photos de manière aléatoire
-            // Pour chaque photo, récupérer ses métadonnées
-            photos.forEach((photo) => fetchMetadata(photo.id));
+          
           })
           .catch((error) =>
             console.error("Erreur lors de la récupération des photos:", error)

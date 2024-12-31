@@ -64,3 +64,26 @@ export const getPhotoMetadata = async (photoId) => {
     throw new Error("Erreur lors de la récupération des métadonnées");
   }
 };
+
+
+export const fetchAllPhotos = async (userId, page = 1, perPage = 500) => {
+  try {
+    const response = await fetch(
+      `https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=${apiKey}&user_id=${userId}&extras=geo&per_page=${perPage}&page=${page}&format=json&nojsoncallback=1`
+    );
+    const data = await response.json();
+
+    if (data.stat === "ok") {
+      return {
+        photos: data.photos.photo,
+        totalPages: data.photos.pages,
+      };
+    } else {
+      console.error("Erreur lors de la récupération des photos:", data.message);
+      return { photos: [], totalPages: 0 };
+    }
+  } catch (error) {
+    console.error("Erreur lors de la récupération des photos:", error);
+    return { photos: [], totalPages: 0 };
+  }
+};

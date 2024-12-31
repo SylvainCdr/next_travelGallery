@@ -121,11 +121,21 @@ const getPhotoMetadata = async (photoId) => {
 
     if (data.stat === "ok") {
       const photo = data.photo;
+
+      // Extraire les données de localisation
+      const location = photo.location ? {
+        latitude: photo.location.latitude,
+        longitude: photo.location.longitude,
+        country: photo.location.country._content,
+        neighbourhood: photo.location.neighbourhood._content,
+      } : null;
+
       return {
         title: photo.title._content,
         description: photo.description._content,
         tags: photo.tags.tag.map((tag) => tag._content).join(", "),
         dateTaken: photo.dates.taken,
+        location,  // Retourne les données de localisation
       };
     } else {
       console.error("Erreur lors de la récupération des métadonnées:", data);
@@ -136,3 +146,4 @@ const getPhotoMetadata = async (photoId) => {
     return {};
   }
 };
+

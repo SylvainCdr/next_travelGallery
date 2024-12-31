@@ -7,10 +7,9 @@ export default function Home() {
   const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
 
   useEffect(() => {
-    // Appel de l'API pour récupérer toutes les photos avec leurs métadonnées
     fetchAllPhotosWithMetadata(userId).then((data) => {
       if (data.photos) {
-        setPhotos(data.photos);  // Mettez à jour l'état avec toutes les photos et leurs métadonnées
+        setPhotos(data.photos);
       }
     });
   }, [userId]);
@@ -21,7 +20,6 @@ export default function Home() {
     <div className={styles.homeContainer}>
       <h1>Welcome to my website</h1>
       <div>
-        {/* Affichage des photos et de leurs métadonnées */}
         {photos.length > 0 ? (
           photos.map((photo) => (
             <div key={photo.id}>
@@ -35,6 +33,17 @@ export default function Home() {
                 <p>{photo.metadata.description}</p>
                 <p><strong>Tags:</strong> {photo.metadata.tags}</p>
                 <p><strong>Date Taken:</strong> {photo.metadata.dateTaken}</p>
+                
+                {/* Affichage des informations de localisation */}
+                {photo.metadata.location && (
+                  <div>
+                    <h4>Location:</h4>
+                    <p><strong>Country:</strong> {photo.metadata.location.country}</p>
+                    <p><strong>Neighbourhood:</strong> {photo.metadata.location.neighbourhood}</p>
+                    <p><strong>Latitude:</strong> {photo.metadata.location.latitude}</p>
+                    <p><strong>Longitude:</strong> {photo.metadata.location.longitude}</p>
+                  </div>
+                )}
               </div>
             </div>
           ))

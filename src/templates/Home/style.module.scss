@@ -1,13 +1,113 @@
 .homeContainer {
-  padding-top: 6rem;
-  align-items: center;
-  width: 100%;
-  max-width: 1400px;
-  min-height: 100vh;
+  padding-top: 5rem;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1rem;
+.hero {
+  background-color: var(--sunset3);
+  color: #fff;
+  text-align: center;
+  height: 40vh;
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .heroContent h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
   }
+
+  .heroContent p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 50px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--sunset2);
+    transition: background-color 0.3s;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap; /* Ajout de flex-wrap pour gérer le remplissage des espaces */
+  justify-content: center; /* Centrer les éléments dans la galerie */
+  padding-top: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex; /* Changement de grid à flex */
+  gap: 10px; /* Espacement entre les éléments */
+  width: 100%;
+  flex-wrap: wrap; /* Permet aux éléments de s'enrouler sur plusieurs lignes */
+  justify-content: center; /* Centrer les éléments sur chaque ligne */
+}
+
+.photoItem {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  display: flex; /* Utilisation du flex pour gérer la taille des photos */
+  align-items: center; /* Centrer les images à l'intérieur */
+  justify-content: center; /* Centrer les images horizontalement */
+  width: 400px;
+  height: 400px;
+}
+
+.photo {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* Assure que l'image couvre la vignette sans se déformer */
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #333;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader p {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  color: #333;
 }

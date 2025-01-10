@@ -25,6 +25,9 @@ function Footer() {
             <li>A Propos</li>
           </Link>
         </ul>
+
+        
+        <p className={styles.copyright}>© 2024 Sly's Adventure Gallery. Tous droits réservés.</p>
       </div>
 
     </div>

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { fetchPhotosFromAlbum } from "../../services/flickr";
 import { motion } from "framer-motion";
 import styles from "./style.module.scss";
-import ModalImage from "react-modal-image";
 
 // Fonction pour mélanger un tableau de manière aléatoire
 const shuffleArray = (array) => {
@@ -21,24 +20,25 @@ const getRandomPositionAndSize = () => {
 
 export default function Album() {
   const [photos, setPhotos] = useState([]);
-  const [photoMetadata, setPhotoMetadata] = useState({});
+  const [albumTitle, setAlbumTitle] = useState(""); // Stocke le titre de l'album
+  const [randomHeroPhoto, setRandomHeroPhoto] = useState(null); // Photo aléatoire pour le hero
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(null); // Gère la photo actuellement affichée
   const router = useRouter();
 
-  // Fonction pour récupérer l'URL de la photo en taille "Large 1600"
   const getLargePhotoUrl = (photo) => {
     return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
   };
-
-
 
   useEffect(() => {
     if (router.isReady) {
       const { id } = router.query;
       if (id) {
         fetchPhotosFromAlbum(id, process.env.NEXT_PUBLIC_FLICKR_USER_ID)
-          .then((photos) => {
-            setPhotos(shuffleArray(photos));  // Mélange des photos de manière aléatoire
-          
+          .then(({ photos, title }) => {
+            const shuffledPhotos = shuffleArray(photos);
+            setPhotos(shuffledPhotos); // Mélanger les photos
+            setAlbumTitle(title); // Définir le titre de l'album
+            setRandomHeroPhoto(shuffledPhotos[8]); // Photo aléatoire pour le hero
           })
           .catch((error) =>
             console.error("Erreur lors de la récupération des photos:", error)
@@ -47,55 +47,104 @@ export default function Album() {
     }
   }, [router.isReady]);
 
+  // Gestion des clics pour ouvrir ou naviguer dans la vue agrandie
+  const handleOpenModal = (index) => {
+    setCurrentPhotoIndex(index);
+  };
+
+  const handleCloseModal = () => {
+    setCurrentPhotoIndex(null);
+  };
+
+  const handleNextPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+  };
+
+  const handlePrevPhoto = () => {
+    setCurrentPhotoIndex((prevIndex) =>
+      (prevIndex - 1 + photos.length) % photos.length
+    );
+  };
+
   return (
     <div className={styles.albumContainer}>
-      <h1>Photos de l'album</h1>
-    
-        <div className={styles.photoGrid}>
-          {photos.map((photo) => {
-            const smallPhotoUrl = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-            const largePhotoUrl = getLargePhotoUrl(photo);
-            const { x, y, rotate, scale } = getRandomPositionAndSize(); // Obtenez des positions et tailles aléatoires
-
-            return (
-              <motion.div
-                key={photo.id}
-                className={styles.photoItem}
-                initial={{
-                  opacity: 0,
-                  x: x,
-                  y: y,
-                  rotate: rotate,
-                  scale: scale,  // Appliquer une taille aléatoire à l'entrée
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  rotate: 0,
-                  scale: 1,  // La taille finale est la taille normale
-                }}
-                transition={{
-                  duration: 1, // Durée de l'animation
-                  type: "spring", // Utilisation d'une animation de type spring
-                  stiffness: 50, // Stiffness pour un effet plus élastique
-                }}
-              >
-                <ModalImage
-                  alt={photo.title}
-                  className={styles.photoImage}
-                  small={smallPhotoUrl}
-                  large={largePhotoUrl}
-                />
-              </motion.div>
-            );
-          })}
+      {/* Hero Section */}
+      {randomHeroPhoto && (
+        <div className={styles.hero}>
+          <img
+            src={getLargePhotoUrl(randomHeroPhoto)}
+            alt={randomHeroPhoto.title}
+            className={styles.heroImage}
+          />
+          <div className={styles.heroOverlay}>
+            <h1 className={styles.heroTitle}>{albumTitle}</h1>
+          </div>
         </div>
+      )}
 
-    
-        <button onClick={() => router.back()}>Retour</button>
+      {/* Photos Grid */}
+      <div className={styles.photoGrid}>
+        {photos.map((photo, index) => {
+          const smallPhotoUrl = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+          const largePhotoUrl = getLargePhotoUrl(photo);
+          const { x, y, rotate, scale } = getRandomPositionAndSize();
 
-      
+          return (
+            <motion.div
+              key={photo.id}
+              className={styles.photoItem}
+              initial={{
+                opacity: 0,
+                x: x,
+                y: y,
+                rotate: rotate,
+                scale: scale,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                rotate: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1,
+                type: "spring",
+                stiffness: 50,
+              }}
+              onClick={() => handleOpenModal(index)} // Ouvrir la photo agrandie
+            >
+              <img
+                alt={photo.title}
+                className={styles.photoImage}
+                src={smallPhotoUrl}
+              />
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Modal Agrandie */}
+      {currentPhotoIndex !== null && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              &times;
+            </button>
+            <button className={styles.prevButton} onClick={handlePrevPhoto}>
+              &larr;
+            </button>
+            <img
+              src={getLargePhotoUrl(photos[currentPhotoIndex])}
+              alt={photos[currentPhotoIndex]?.title}
+              className={styles.modalImage}
+            />
+            <button className={styles.nextButton} onClick={handleNextPhoto}>
+              &rarr;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,66 @@
+.heroGalleryContainer {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+
+
+.heroGallery {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; // Assure que la vidéo reste en arrière-plan
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5); // Overlay sombre pour améliorer la lisibilité
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: 'cinzel', sans-serif;
+}
+
+p {
+  font-size: 1.5rem;
+  margin: 10px 0 0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+}
+
+@media screen and (max-width: 900px) {
+  .heroGalleryContainer {
+    height: 50vh;
+
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}  }

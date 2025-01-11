@@ -18,21 +18,30 @@ export const fetchAlbums = async (userId) => {
   }
 };
 
-// Récupérer les photos d'un album spécifique
+
+
+// Récupérer les photos d'un album spécifique avec son titre
 export const fetchPhotosFromAlbum = async (albumId, userId) => {
   try {
     const response = await fetch(
       `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&user_id=${userId}&format=json&nojsoncallback=1`
     );
     const data = await response.json();
-    return data.photoset.photo;
+
+    // Retourne à la fois les photos et le titre de l'album
+    return {
+      photos: data.photoset.photo,
+      title: data.photoset.title,
+    };
   } catch (error) {
     console.error(
       "Erreur lors de la récupération des photos de l'album:",
       error
     );
+    return { photos: [], title: "Album inconnu" };
   }
 };
+
 
 // Récupérer toutes les photos avec leurs métadonnées
 export const fetchAllPhotosWithMetadata = async (userId, perPage = 500) => {

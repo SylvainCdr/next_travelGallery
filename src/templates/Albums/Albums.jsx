@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { fetchAlbums } from '../../services/flickr';
-import styles from './style.module.scss';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { fetchAlbums } from "../../services/flickr";
+import styles from "./style.module.scss";
 
 export default function Albums() {
   const [albums, setAlbums] = useState([]);
@@ -17,18 +17,17 @@ export default function Albums() {
     router.push(`/albums/${albumId}`); // Redirection vers la page dynamique de l'album
   };
 
+  console.log(albums);
+
   return (
     <div className={styles.albumsContainer}>
-    
-
       {/* Affichage des albums */}
       <div className={styles.albumList}>
-        <h1>Albums</h1>
         {albums.length > 0 ? (
           <div className={styles.albumGrid}>
             {albums.map((album) => (
-              <div 
-                key={album.id} 
+              <div
+                key={album.id}
                 className={styles.albumItem}
                 onClick={() => handleAlbumClick(album.id)} // Rediriger vers la page de l'album au clic
               >

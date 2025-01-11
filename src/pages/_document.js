@@ -55,8 +55,6 @@ export default function Document() {
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:site_name" content="Diviniti" /> */}
 
-      
-
         {/* Favicon */}
         {/* <link
           rel="icon"
@@ -73,6 +71,15 @@ export default function Document() {
           rel="stylesheet"
         />
         <link
+          href="https://fonts.cdnfonts.com/css/cinzel"
+          rel="stylesheet"
+        ></link>
+
+        <link
+          href="https://fonts.cdnfonts.com/css/fauna-one"
+          rel="stylesheet"
+        ></link>
+        <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
@@ -81,12 +88,10 @@ export default function Document() {
         {/* Font Awesome */}
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
 
-
-
-
-           {/* Google Tag Manager */}
+        {/* Google Tag Manager */}
         {/* <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -106,8 +111,8 @@ export default function Document() {
         {/* End Google Tag Manager */}
       </Head>
       <body>
- {/* Google Tag Manager (noscript) */}
- {/* <noscript>
+        {/* Google Tag Manager (noscript) */}
+        {/* <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TXS5MXDB"
             height="0"
@@ -117,8 +122,6 @@ export default function Document() {
           ></iframe>
         </noscript> */}
         {/* End Google Tag Manager (noscript) */}
-
-
 
         <Main />
         <NextScript />

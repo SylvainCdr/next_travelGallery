@@ -1,40 +1,62 @@
 .homeContainer {
-  padding-top: 5rem;
-}
+  padding-top: 4rem;
 
-.hero {
-  background-color: var(--sunset3);
-  color: #fff;
-  text-align: center;
-  height: 40vh;
-  width: 100%;
-  margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-  .heroContent h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+  .aboutMe {
+    margin: 50px 0;
+    padding: 40px;
+    background: linear-gradient(135deg, #f9f9f9, #e6e6e6);
+    box-shadow: 0 6px 12px rgba(190, 190, 190, 0.366);
+    display: flex;
+    justify-content: center;
   }
-
-  .heroContent p {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 50px;
+  
+  .aboutMeContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    text-align: left;
   }
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: var(--sunset2);
-    transition: background-color 0.3s;
+  
+  .profilePhoto {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
   }
-}
+  
+  .profilePhoto:hover {
+    transform: scale(1.1);
+  }
+  
+  .aboutText {
+    flex: 1;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .aboutText h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #222;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .aboutText p {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .aboutText p:last-child {
+    font-style: italic;
+    color: #666;
+  }
+  
 
 .gallery {
   display: flex;
@@ -63,8 +85,8 @@
   display: flex; /* Utilisation du flex pour gérer la taille des photos */
   align-items: center; /* Centrer les images à l'intérieur */
   justify-content: center; /* Centrer les images horizontalement */
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
 }
 
 .photo {
@@ -110,4 +132,33 @@
   margin-left: 10px;
   font-size: 1.2rem;
   color: #333;
+}
+
+// <div className={styles.btns}>
+// <button className={styles.btn}>See Travel Albums</button>
+// <button className={styles.btn}>See Wildlife</button>
+// </div>
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+
+  button {
+    padding: 10px 220px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #555;
+    }
+  }
+
+}
+
 }

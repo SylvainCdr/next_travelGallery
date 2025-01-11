@@ -145,7 +145,7 @@ export default function Home() {
           <button className={styles.btn}>See Travel Albums</button>
         </Link>
         <Link href="/albums/72177720323101492">
-          <button className={styles.btn}>See Wildlife</button>
+          <button className={styles.btn}>See Nature & Animals</button>
         </Link>
       </div>
 

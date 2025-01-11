@@ -1,15 +1,33 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import styles from './style.module.scss';
-import { fetchAllPhotosWithMetadata } from '@/services/flickr';
-import Link from 'next/link';
-
+import React, { useEffect, useState } from "react";
+import HeroGallery from "@/components/heroGallery/heroGallery";
+import styles from "./style.module.scss";
+import { fetchAllPhotosWithMetadata } from "@/services/flickr";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
+  // Liste des IDs pour le HeroGallery
+  const heroPhotoIds = [
+    "53688327997", "54254685921", "53696551583", "54253765902",
+    "54179157855", "54178884234", "54178884249", "53715240727",
+    "53716364863", "53694442032", "53698205783", "53689847919",
+    "53696982782"
+  ];
 
+  const [heroPhotoId, setHeroPhotoId] = useState(null); // Photo pour le Hero
+  const [galleryPhotos, setGalleryPhotos] = useState([]); // Photos pour la galerie
+  const [loadingGallery, setLoadingGallery] = useState(true);
+  const [photos, setPhotos] = useState([]);
+  const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
+  const [loading, setLoading] = useState(true);
+
+  // Sélectionner une photo aléatoire pour le Hero
+  useEffect(() => {
+    const randomPhotoId =
+      heroPhotoIds[Math.floor(Math.random() * heroPhotoIds.length)];
+    setHeroPhotoId(randomPhotoId);
+  }, []);
+
+  // Charger les 20 photos pour la galerie
   useEffect(() => {
     fetchAllPhotosWithMetadata(userId).then((data) => {
       if (data.photos) {
@@ -20,21 +38,19 @@ export default function Home() {
     });
   }, [userId]);
 
+
+  if (!heroPhotoId) {
+    return <div className={styles.loader}>Chargement...</div>;
+  }
+
   return (
     <div className={styles.homeContainer}>
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1>Bienvenue dans ma galerie de photos</h1>
-          <p>Découvrez une collection unique de photos provenant de ma vitrine Flickr.</p>
-     
-          <Link href="/albums" className={styles.button}>
-            Voir les albums
-          </Link>
+      <HeroGallery photoId={heroPhotoId} />
 
-        </div>
-      </section>
+    
 
+  
       {/* Loader */}
       {loading && (
         <div className={styles.loader}>

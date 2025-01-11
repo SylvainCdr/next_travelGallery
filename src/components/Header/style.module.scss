@@ -1,63 +1,147 @@
 .headerContainer {
   display: flex;
-  // margin-top: 1%;
-  align-self: center;
-  background-color: #fdfcfd;
-  color: white;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdfdfe;
   position: fixed;
-  z-index: 1000;
   top: 0;
-  height: 5rem;
   width: 100%;
+  z-index: 1000;
+  padding: 0 20px;
+  height: 6rem;
 
   .headerLogo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-
-    left: 0%;
+    padding-left: 1rem;
     img {
-      width: 4.5rem;
-      height: auto;
-      transition: all 0.3s;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      -o-border-radius: 10px;
+      width: 5rem;
+      height: 4rem;
+      cursor: pointer;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      transition: 0.3s;
 
       &:hover {
-        color: black;
-        scale: 1.1;
+        scale: 1.05;
       }
     }
   }
+
+  .burgerMenu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 35px;
+    cursor: pointer;
+    z-index: 1100;
+
+    .line {
+      width: 35px;
+      height: 4px;
+      background-color: var(--sunset1);
+      border-radius: 2px;
+    }
+  }
+
   .headerLinks {
     display: flex;
-    justify-content: space-around;
-    width: 80%;
     align-items: center;
-    margin-left: 30%;
-    gap: 20px;
+    justify-content: center;
 
-    li {
-      a {
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        color : white;
-        background-color: var(--sunset1);
-        text-transform: uppercase;
-        padding: 5px 15px;
-        // border: 1px solid var(--sunset1);
-        border-radius: 5px;
-        transition: all 0.3s;
-        &:hover {
-          background-color: #006b79;
+    ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        a {
+          text-decoration: none;
+          color: white;
+          background-color: var(--sunset1);
+          padding: 10px 15px;
+          border: 1px solid white;
+          width: 12rem;
+          text-align: center;
+          border-radius: 5px;
+          transition: 0.3s;
+          -webkit-transition: 0.3s;
+          -moz-transition: 0.3s;
+          -ms-transition: 0.3s;
+          -o-transition: 0.3s;
+
+          &:hover {
+            background-color: white;
+            color: var(--sunset1);
+            border: 1px solid var(--sunset1);
+          }
+        }
+        .flickrIcon {
+          border: none;
+          width: 5rem;
+          padding-right: 3rem;
+          background-color: transparent;
+
+          &:hover {
+            background-color: transparent;
+            border : none;
+            scale : 1.05;
+          }
         }
       }
     }
+  }
 
+  @media screen and (max-width: 900px) {
+    height: 5rem;
+
+    .headerLogo {
+      img {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+    .burgerMenu {
+      display: flex;
+      padding-right: 4rem;
+    }
+
+    .headerLinks {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.873);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+
+      ul {
+        flex-direction: column;
+
+        li a {
+          color: white;
+          font-size: 1rem;
+        }
+        .linkedinIcon {
+          border: none;
+          position: absolute;
+          top: 4rem;
+          right: -0.8rem;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
   }
 }

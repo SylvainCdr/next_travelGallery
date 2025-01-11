@@ -66,6 +66,18 @@ export default function Album() {
     );
   };
 
+  // Fonction pour détecter le swipe
+  const handleSwipe = (e) => {
+    const startX = e.changedTouches[0].clientX;
+    const endX = e.changedTouches[1]?.clientX || startX;
+
+    if (startX - endX > 100) {
+      handleNextPhoto();
+    } else if (endX - startX > 100) {
+      handlePrevPhoto();
+    }
+  };
+
   return (
     <div className={styles.albumContainer}>
       {/* Hero Section */}
@@ -126,13 +138,17 @@ export default function Album() {
 
       {/* Modal Agrandie */}
       {currentPhotoIndex !== null && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <button className={styles.closeButton} onClick={handleCloseModal}>
-              &times;
-            </button>
+        <div
+          className={styles.modal}
+          onClick={handleCloseModal} // Fermer en cliquant en dehors
+        >
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()} // Empêcher la fermeture si on clique sur le contenu
+            onTouchStart={handleSwipe} // Détecter les gestes de swipe
+          >
             <button className={styles.prevButton} onClick={handlePrevPhoto}>
-              &larr;
+            <i class="fa-solid fa-chevron-left"></i>
             </button>
             <img
               src={getLargePhotoUrl(photos[currentPhotoIndex])}
@@ -140,7 +156,7 @@ export default function Album() {
               className={styles.modalImage}
             />
             <button className={styles.nextButton} onClick={handleNextPhoto}>
-              &rarr;
+            <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
         </div>

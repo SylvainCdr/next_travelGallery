@@ -41,7 +41,7 @@ export default function Home() {
       if (data.photos) {
         const randomPhotos = data.photos
           .sort(() => Math.random() - 0.5)
-          .slice(0, 18);
+          .slice(0, 16);
         setPhotos(randomPhotos);
         setLoading(false);
       }
@@ -65,15 +65,16 @@ export default function Home() {
       alt="Profile Picture"
       className={styles.profilePhoto}
     />
-    <div className={styles.aboutText}>
-      <h2>Bienvenue !</h2>
-      <p>
-        Je suis Sylvain, passionné de voyages et de photographie. J'aime particulièrement capturer la beauté de la vie sauvage, notamment les reptiles, amphibiens et invertébrés.
-      </p>
-      <p>
-        Avec mon reflex, mon drone et ma caméra sous-marine, je m'efforce d'immortaliser des instants uniques et de partager mes découvertes avec vous. Explorez mes albums pour voyager à travers mon objectif !
-      </p>
-    </div>
+<div className={styles.aboutText}>
+  <h2>Welcome!</h2>
+  <p>
+    I'm Sylvain, passionate about travel and photography. I particularly enjoy capturing the beauty of wildlife, especially reptiles, amphibians, and invertebrates.
+  </p>
+  <p>
+    With my DSLR, drone, and underwater camera, I strive to capture unique moments and share my discoveries with you. Explore my albums to travel through my lens!
+  </p>
+</div>
+
   </div>
 </section>
 

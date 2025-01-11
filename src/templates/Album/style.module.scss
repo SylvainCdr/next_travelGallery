@@ -1,24 +1,26 @@
 .albumContainer {
   padding-top: 4rem;
-  max-width: 1400px;
+
   margin: 0 auto;
   min-height: 100vh;
 
   .hero {
     position: relative;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     margin-bottom: 2rem;
+   
   }
-  
   .heroImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+ 
+
   }
   
   .heroOverlay {
@@ -44,6 +46,8 @@
   
 
   .photoGrid {
+    max-width: 1400px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 0.5rem;
@@ -63,6 +67,60 @@
     border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    position: relative;
+    text-align: center;
+  }
+  
+  .modalImage {
+    max-width: 90%;
+    max-height: 80%;
+  }
+  
+  .closeButton,
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    background-color: inherit;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color : rgb(201, 201, 201);
+  }
+  
+  .closeButton {
+    top: 10px;
+    right: 10px;
+    color : grey;
+  }
+  
+  .prevButton {
+    left: 00px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .nextButton {
+    right: 00px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
 
   p {
     font-size: 1.5rem;

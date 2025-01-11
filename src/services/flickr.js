@@ -9,9 +9,13 @@ export const fetchAlbums = async (userId) => {
     );
     const data = await response.json();
     const albums = data.photosets.photoset.filter(
-      (album) => album.id !== "72177720323101492" // Wildlife album
+      (album) => album.id !== "72177720323101492" // Exclure l'album Wildlife
     );
-    return albums;
+
+    // Mélanger les albums de manière aléatoire
+    const shuffledAlbums = albums.sort(() => Math.random() - 0.5);
+
+    return shuffledAlbums;
   } catch (error) {
     console.error("Erreur lors de la récupération des albums:", error);
     return [];

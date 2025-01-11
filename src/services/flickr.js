@@ -1,16 +1,20 @@
 const apiKey = process.env.NEXT_PUBLIC_FLICKR_KEY;
 const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
 
-// Récupérer les albums
+// Récupérer tous les albums (except album wildlife)
 export const fetchAlbums = async (userId) => {
   try {
     const response = await fetch(
       `https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=${apiKey}&user_id=${userId}&format=json&nojsoncallback=1`
     );
     const data = await response.json();
-    return data.photosets.photoset;
+    const albums = data.photosets.photoset.filter(
+      (album) => album.id !== "72177720323101492" // Wildlife album
+    );
+    return albums;
   } catch (error) {
     console.error("Erreur lors de la récupération des albums:", error);
+    return [];
   }
 };
 
@@ -155,4 +159,23 @@ export const fetchPhotoById = async (photoId) => {
     return null;
   }
 };
+
+
+//fonction pour récuperer un album spécifique
+export const fetchAlbumById = async (albumId) => {
+  try {
+    const response = await fetch(
+      `https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=${apiKey}&photoset_id=${albumId}&user_id=${userId}&format=json&nojsoncallback=1`
+    );
+    const data = await response.json();
+    return data.photoset.photo;
+  } catch (error) {
+    console.error(
+      "Erreur lors de la récupération des photos de l'album:",
+      error
+    );
+  }
+};
+
+
 

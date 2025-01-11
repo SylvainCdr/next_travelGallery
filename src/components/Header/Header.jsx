@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false); // État pour le menu burger
   const [isMobile, setIsMobile] = useState(false); // État pour la détection de l'écran mobile
-  const linkedin = "https://www.linkedin.com/company/divinititech";
+  const flickr = "https://www.flickr.com/people/114125114@N02/";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -54,7 +54,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/wildlife" onClick={toggleMenu}>
+            <Link href="/albums/72177720323101492" onClick={toggleMenu}>
             Nature & Animals
             </Link>
           </li>
@@ -65,7 +65,7 @@ export default function Header() {
           </li> */}
           <li>
             <Link
-              href={linkedin}
+              href={flickr}
               target="_blank"
               rel="noopener noreferrer"
               onClick={toggleMenu}

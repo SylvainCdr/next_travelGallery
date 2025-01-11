@@ -5,6 +5,7 @@ import styles from "./style.module.scss";
 import { fetchAllPhotosWithMetadata } from "@/services/flickr";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { BallTriangle } from "react-loader-spinner"; // Importer le loader
 
 export default function Home() {
   const heroPhotoIds = [
@@ -25,17 +26,18 @@ export default function Home() {
 
   const [heroPhotoId, setHeroPhotoId] = useState(null); // Photo pour le Hero
   const [galleryPhotos, setGalleryPhotos] = useState([]); // Photos pour la galerie
-  const [loadingGallery, setLoadingGallery] = useState(true);
   const [photos, setPhotos] = useState([]);
-  const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
   const [loading, setLoading] = useState(true);
+  const userId = process.env.NEXT_PUBLIC_FLICKR_USER_ID;
 
+  // Choisir une photo aléatoire pour le Hero
   useEffect(() => {
     const randomPhotoId =
       heroPhotoIds[Math.floor(Math.random() * heroPhotoIds.length)];
     setHeroPhotoId(randomPhotoId);
   }, []);
 
+  // Récupérer les photos depuis l'API Flickr
   useEffect(() => {
     fetchAllPhotosWithMetadata(userId).then((data) => {
       if (data.photos) {
@@ -49,7 +51,19 @@ export default function Home() {
   }, [userId]);
 
   if (!heroPhotoId) {
-    return <div className={styles.loader}>Loading...</div>;
+    return (
+      <div className={styles.loader}>
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#D6C3C9"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   return (
@@ -59,29 +73,39 @@ export default function Home() {
 
       {/* About Me Section */}
       <section className={styles.aboutMe}>
-  <div className={styles.aboutMeContainer}>
-    <img
-      src="/assets/profile.jpg"
-      alt="Profile Picture"
-      className={styles.profilePhoto}
-    />
-<div className={styles.aboutText}>
-  <h2>Welcome!</h2>
-  <p>
-    I'm Sylvain, passionate about travel and photography. I particularly enjoy capturing the beauty of wildlife, especially reptiles, amphibians, and invertebrates.
-  </p>
-  <p>
-    With my DSLR, drone, and underwater camera, I strive to capture unique moments and share my discoveries with you. Explore my albums to travel through my lens!
-  </p>
-</div>
-
-  </div>
-</section>
+        <div className={styles.aboutMeContainer}>
+          <img
+            src="/assets/profile.jpg"
+            alt="Profile Picture"
+            className={styles.profilePhoto}
+          />
+          <div className={styles.aboutText}>
+            <h2>Welcome!</h2>
+            <p>
+              I'm Sylvain, passionate about travel and photography. I
+              particularly enjoy capturing the beauty of wildlife, especially
+              reptiles, amphibians, and invertebrates.
+            </p>
+            <p>
+              With my DSLR, drone, and underwater camera, I strive to capture
+              unique moments and share my discoveries with you. Explore my
+              albums to travel through my lens!
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Loader */}
       {loading && (
         <div className={styles.loader}>
-          <div className={styles.spinner}></div>
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#D6C3C9"
+            ariaLabel="ball-triangle-loading"
+            visible={true}
+          />
           <p>Loading pictures...</p>
         </div>
       )}

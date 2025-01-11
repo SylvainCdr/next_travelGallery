@@ -74,7 +74,7 @@ export default function Header() {
             >
               <img
                 src="assets/flickrLogo.png"
-                alt="logo linkedin"
+                alt= "flickr logo"
                 className={styles.flickrIcon}
               />
             </Link>

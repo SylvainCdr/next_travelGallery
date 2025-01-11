@@ -13,21 +13,21 @@ function Footer() {
         <img className={styles.mase} src="/assets/icons/mase.png" alt="Logo MASE" loading="lazy" />
       </div> */}
       <div className={styles["section-3"]}>
-        <h4>Plan de site </h4>
+        <h4>Sitemap </h4>
         <ul>
           <Link href="/">
-            <li>Accueil</li>
+            <li>Home</li>
           </Link>
           <Link href="/albums">
-            <li>Albums</li>
+            <li>Travel Albums</li>
           </Link>
-          <Link href="/a-propos">
-            <li>A Propos</li>
+          <Link href="/albums/72177720323101492">
+            <li>Nature & Animals</li>
           </Link>
         </ul>
 
         
-        <p className={styles.copyright}>© 2024 Sly's Adventure Gallery. Tous droits réservés.</p>
+        <p className={styles.copyright}>© 2024 Sly's Adventure Gallery. All rights reserved.</p>
       </div>
 
     </div>

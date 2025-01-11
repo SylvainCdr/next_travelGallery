@@ -26,50 +26,45 @@ export default function Document() {
 
         {/* Meta Tags for SEO */}
 
-        {/* <meta
-          name="description"
-          content="Diviniti, pionnier en sûreté augmentée, propose des solutions de vidéoprotection, IA et XR pour la ville intelligente de demain. Découvrez notre système d'exploitation dédié à la sécurité."
-        />
-        <meta
-          name="keywords"
-          content="sûreté augmentée, vidéoprotection, intelligence artificielle, réalité étendue, XR, ville intelligente, sécurité proactive, analyse d'image, contrôle d'accès, prédiction des risques, gestion de la sécurité, smart city, transport sécurisé, Diviniti"
-        />
-        <meta name="author" content="Diviniti" />
-        <meta name="robots" content="index, follow" />
-     
+      
+<meta
+  name="description"
+  content="Découvrez l'art de la photographie à travers des albums uniques capturant des moments d'émotion, de beauté et d'authenticité. Explorez des galeries variées, du portrait au paysage."
+/>
+<meta
+  name="keywords"
+  content="photographie, albums photo, galeries photo, portraits, paysages, art visuel, moments capturés, photographie professionnelle, créativité, esthétique, émotion, beauté, photo artistique"
+/>
+<meta name="author" content="Sly's Adventure Gallery" />
+<meta name="robots" content="index, follow" />
 
-        <meta
-          property="og:title"
-          content="Diviniti - Sûreté augmentée pour la ville de demain"
-        />
-        <meta
-          property="og:description"
-          content="Diviniti développe des solutions de sûreté augmentée intégrant l'intelligence artificielle et la réalité étendue pour sécuriser les infrastructures de transport, bâtiments et villes."
-        />
-        <meta property="og:url" content="https://www.diviniti.tech" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://files.pixecurity.com/wp-content/uploads/sites/2/2024/10/diviniti-logo-gradient.png"
-        />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Diviniti" /> */}
+<meta
+  property="og:title"
+  content="Galerie Photo - Capturez l'émotion à travers l'objectif"
+/>
+<meta
+  property="og:description"
+  content="Explorez une collection inspirante de photos uniques, de paysages enchanteurs, de portraits captivants et bien plus. Laissez-vous séduire par la magie de chaque cliché."
+/>
+<meta property="og:url" content="https://slysadventuregallery.firebaseapp.com/" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="assets/logo.jpg"
+/>
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content="Sly's Adventure Gallery" />
+
+
 
         {/* Favicon */}
-        {/* <link
+        <link
           rel="icon"
-          href="http://files.pixecurity.com/wp-content/uploads/sites/2/2024/10/diviniti-logo-gradient.png"
-        /> */}
+          href="assets/logo.jpg"
+        />
 
         {/* Google Fonts */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-        />
-        <link
-          href="https://fonts.cdnfonts.com/css/quicksand"
-          rel="stylesheet"
-        />
+     
         <link
           href="https://fonts.cdnfonts.com/css/cinzel"
           rel="stylesheet"
@@ -83,7 +78,7 @@ export default function Document() {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <link href="https://fonts.cdnfonts.com/css/barlow" rel="stylesheet" />
+ 
 
         {/* Font Awesome */}
         <link

@@ -4,14 +4,28 @@
   max-width: 1400px;
   min-height: 100vh;
 
+  .loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; // Centrer sur toute la page
+    color: #555;
+  }
+  
+  .loader p {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
 
   .albumList {
     margin-bottom: 40px;
-    padding : 0 1rem;
+    padding : 0rem;
 
     .albumGrid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 20px;
 
 

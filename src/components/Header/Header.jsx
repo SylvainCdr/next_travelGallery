@@ -58,11 +58,11 @@ export default function Header() {
             Nature & Animals
             </Link>
           </li>
-          {/* <li>
-            <Link href="/tendances-et-actus" onClick={toggleMenu}>
-              Tendances & Actus
+          <li>
+            <Link href="/sky-&-sea-vibes" onClick={toggleMenu}>
+            Sky & Sea Vibes
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link
               href={flickr}

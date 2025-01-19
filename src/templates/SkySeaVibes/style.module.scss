@@ -1,0 +1,22 @@
+.skySeaVibesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  padding-top: 5rem;
+
+  .videoWrapper {
+    position: relative;
+    padding-top: 56.25%; /* Rapport 16:9 */
+    width: 100%;
+    max-width: 885px; /* Largeur maximale */
+    margin: 0 auto;
+  }
+
+  .reactPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
